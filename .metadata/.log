@@ -1,0 +1,13 @@
+!SESSION 2023-04-20 11:53:17.274 -----------------------------------------------
+eclipse.buildId=4.17.2.202301310704
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -product org.springframework.boot.ide.branding.sts4 -product org.springframework.boot.ide.branding.sts4
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4 -product org.springframework.boot.ide.branding.sts4 -data C:\Users\fahie\Desktop\REST\SpringIRC -product org.springframework.boot.ide.branding.sts4
+
+!ENTRY ch.qos.logback.classic 1 0 2023-04-20 11:53:19.450
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2023-04-20 11:53:22.592
+!MESSAGE Logback config file: C:\Users\fahie\Desktop\REST\SpringIRC\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.1.0.20221015-0744.xml
