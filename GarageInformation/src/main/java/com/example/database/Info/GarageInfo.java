@@ -23,7 +23,15 @@ public class GarageInfo {
 	private String vehicleName;
 	@Column(name="TotalVehicles")
 	private int totalVehicles;
+	@Column(name="GarageClass")
+	private String garageClass;
 	
+	public String getGarageClass() {
+		return garageClass;
+	}
+	public void setGarageClass(String garageClass) {
+		this.garageClass = garageClass;
+	}
 	public int getGarageId() {
 		return garageId;
 	}
