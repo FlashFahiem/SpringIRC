@@ -1,8 +1,10 @@
 package com.example.database.Services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.database.Info.GarageInfo;
@@ -36,6 +38,31 @@ public class GarageService {
 	public void deleteInfo(int garageId)
 	{
 		grepo.deleteById(garageId);
+	}
+	
+	//sorting
+	public List<GarageInfo> sortAsc(String vehicleName)
+	{
+		return grepo.findAll(Sort.by(vehicleName).ascending());
+	}
+	
+	public List<GarageInfo> sortDesc(String vehicleName)
+	{
+		return grepo.findAll(Sort.by(vehicleName).descending());
+	}
+	
+	//pagination
+	public List<GarageInfo> paginationData(int pageNo, int pageSize)
+	{
+		Page<GarageInfo> p = grepo.findAll(PageRequest.of(pageNo, pageSize));
+		return p.getContent();
+	}
+	
+	//paginationAndSorting
+	public List<GarageInfo> paginationAndSorting(int pageNo,int pageSize,String vehicleName)
+	{
+		Page<GarageInfo> p = grepo.findAll(PageRequest.of(pageNo, pageSize, Sort.by(vehicleName).ascending()));
+		return p.getContent();
 	}
 	
 }

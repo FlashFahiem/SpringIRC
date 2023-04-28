@@ -10,6 +10,8 @@ import jakarta.persistence.Table;
 public class GarageInfo {
 	
 	
+
+	
 	@Id
 	@Column(name="GarageID")
 	private int garageId;
