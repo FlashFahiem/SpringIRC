@@ -18,7 +18,7 @@ import com.example.database.Services.ServicesLogin;
 
 
 @RestController
-@RequestMapping("/games")
+@RequestMapping("/garageLogin")
 public class ControllerLogin {
 
 	
