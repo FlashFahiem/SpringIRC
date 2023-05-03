@@ -1,6 +1,8 @@
 package com.example.database.Services;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +29,12 @@ public class GarageService {
 	{
 		return grepo.findAll();
 	}
+	
+	public Optional<GarageInfo> getDe(int garageId)
+	{
+		return grepo.findById(garageId);
+	}
+	
 	
 	//updating information
 	public GarageInfo updateInfo(GarageInfo iu)

@@ -1,6 +1,7 @@
 package com.example.database.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,8 @@ import com.example.database.Info.GarageInfo;
 import com.example.database.Services.GarageService;
 import com.example.database.garage.Repository.GarageRepo;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 public class GarageController {
 
@@ -22,19 +25,28 @@ public class GarageController {
 	public GarageService gser;
 	
 	@PostMapping("/saveGarage")
-	
+	@Tag(name = "Add Garage Details",description = "Garage Details")
 	public GarageInfo addDetails(@RequestBody GarageInfo ia)
 	{
 		return gser.saveInfo(ia);
 	}
 	
 	@GetMapping("/getGarage")
+	@Tag(name = "Get Garage Details",description = "Get Details")
 	public List<GarageInfo> getDetails()
 	{
 		return gser.getDet();
 	}
 	
+	@GetMapping("/getGarage/{garageId}")
+	@Tag(name = "Get Garage Details by ID",description = "Get by ID")
+	public Optional<GarageInfo> getDe(@PathVariable("garageId") int gid)
+	{
+		return gser.getDe(gid);
+	}
+	
 	@PutMapping("/updateGarage")
+	@Tag(name = "Update Garage Details",description = "Update")
 	public GarageInfo updateDetails(@RequestBody GarageInfo garageId)
 	{
 		return gser.updateInfo(garageId);
@@ -42,6 +54,7 @@ public class GarageController {
 	
 	//PathVariable
 	@DeleteMapping("/deleteGarage/{garageId}")
+	@Tag(name = "Delete Garage Details",description = "Delete")
 	public String deleteDetails(@PathVariable("garageId") int gid)
 	{
 		gser.deleteInfo(gid);
@@ -49,23 +62,27 @@ public class GarageController {
 	}
 	
 	@GetMapping("/sortAsc/{vehicleName}")
+	@Tag(name = "Sorting in Ascending",description = "Sorting")
 	public List<GarageInfo> sortAscend(@PathVariable("vehicleName") String vehicleName)
 	{
 		return gser.sortAsc(vehicleName);
 	}
 	@GetMapping("/sortDesc/{vehicleName}")
+	@Tag(name = "Sorting in Descending",description = "Sorting")
 	public List<GarageInfo> sortDesc(@PathVariable("vehicleName") String vehicleName)
 	{
 		return gser.sortDesc(vehicleName);
 	}
 	
 	@GetMapping("/pagination/{pageNo}/{pageSize}")
+	@Tag(name = "Pagianting Garage Details",description = "Pagination")
 	public List<GarageInfo> paginationData(@PathVariable("pageNo")int pnu,@PathVariable("pageSize") int psize)
 	{
 		return gser.paginationData(pnu,psize);
 	}
 	
 	@GetMapping("/pagiantionAndSorting/{pageNo}/{pageSize}/{vehicleName}")
+	@Tag(name = "Pagianting and Sorting Garage Details",description = "Pagination and Sorting")
 	public List<GarageInfo> paginationAndSorting(@PathVariable("pageNo") int pnu,@PathVariable("pageSize") int psize,@PathVariable("vehicleName") String vehicleName)
 	{
 		return gser.paginationAndSorting(pnu, psize, vehicleName);
@@ -75,12 +92,14 @@ public class GarageController {
 	public GarageRepo grepo; 
 	
 	@GetMapping("getG")
+	@Tag(name = "Select Statement using Native Query",description = "Native Queries")
 	public List<GarageInfo> getD()
 	{
 		return grepo.getAllData();
 	}
 	
 	@GetMapping("byOwnerName/{id}")
+	
 	public List<GarageInfo> getName(@PathVariable("id") int gid)	{
 		return grepo.byOwnerName(gid);
 	}
