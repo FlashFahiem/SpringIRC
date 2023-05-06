@@ -28,6 +28,11 @@ public List<GarageInfo> startEnd(@Param("start") int start,@Param("end") int end
 @Query(value="delete from ginfo where garageid=?1 and owner_name=?2",nativeQuery = true)
 Integer deleteDet(@Param("id")int gid,@Param("name") String oname);
 
+@Modifying
+@Transactional
+@Query(value="update ginfo set owner_name=?1 where garageid=?2",nativeQuery=true)
+Integer updateDet(@Param("owner_name")String oname,@Param("id") int gid);
+
 //JPQL uses Model Names
 @Query(value="select c from GarageInfo c")
 List<GarageInfo> getAll();
@@ -35,5 +40,16 @@ List<GarageInfo> getAll();
 @Query(value="select c from GarageInfo c where c.garageId=?1")
 public List<GarageInfo> jpql(@Param("id") int gid);
 
+@Modifying
+@Transactional
+@Query(value="delete from GarageInfo c where c.garageId=?1 and c.ownerName=?2")
+Integer deleteDetails(@Param("id")int gid,@Param("name") String oname);
+
+@Modifying
+@Transactional
+@Query(value="update GarageInfo c set c.ownerName=?1 where c.garageId=?2")
+Integer updateDetails(@Param("owner_name")String oname,@Param("id") int gid);
+
 
 }
+

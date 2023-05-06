@@ -99,30 +99,58 @@ public class GarageController {
 	}
 	
 	@GetMapping("byOwnerName/{id}")
-	
+	@Tag(name = "Select Statement using Native Query with Where Clause",description = "Native Queries")
 	public List<GarageInfo> getName(@PathVariable("id") int gid)	{
 		return grepo.byOwnerName(gid);
 	}
 	
 	@GetMapping("startend/{start}/{end}")
+	@Tag(name = "Select Statement using Native Query with Between Clause",description = "Native Queries")
 	public List<GarageInfo> startEnd(@PathVariable("start") int start,@PathVariable("end") int end)	{
 		return grepo.startEnd(start,end);
 	}
 	
 	@DeleteMapping("delete/{id}/{name}")
+	@Tag(name = "Delete Statement using Native Query",description = "Native Queries")
 	public String deleteGarage(@PathVariable("id") int id,@PathVariable("name") String oname)
 	{
 		grepo.deleteDet(id, oname);
 		return "Deleted";
 	}
 	
+	@PutMapping("/update/{name}/{id}")
+	@Tag(name = "Update Statement using Native Query",description = "Native Queries")
+	public String updateGarage(@PathVariable("name") String oname,@PathVariable("id") int gid)
+	{
+		grepo.updateDet(oname, gid);
+		return "Updated";
+	}
+	
+	@PutMapping("/updated/{name}/{id}")
+	@Tag(name = "Update Statement using Java Persistance Query Language",description = "JPQL")
+	public String updateDetails(@PathVariable("name") String oname,@PathVariable("id") int gid)
+	{
+		grepo.updateDetails(oname, gid);
+		return "Updated";
+	}
+	
+	@DeleteMapping("deleted/{id}/{name}")
+	@Tag(name = "Delete Statement using Java Persistance Query Language",description = "JPQL")
+	public String deleteG(@PathVariable("id") int id,@PathVariable("name") String oname)
+	{
+		grepo.deleteDetails(id, oname);
+		return "Deleted";
+	}
+	
 	@GetMapping("jpql")
+	@Tag(name = "Select Statement using Java Persistence Query Language",description = "JPQL")
 	public List<GarageInfo> getJp()
 	{
 		return grepo.getAll();
 	}
 	
 	@GetMapping("jp/{id}")
+	@Tag(name = "Select Statement using Java Persistance Query Language by ID",description = "JPQL")
 	public List<GarageInfo> getjpql(@PathVariable("id")int gid)
 	{
 		return grepo.jpql(gid);
