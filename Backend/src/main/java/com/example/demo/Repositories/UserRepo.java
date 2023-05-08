@@ -8,4 +8,6 @@ import com.example.demo.Model.UserModel;
 @Repository
 public interface UserRepo extends JpaRepository<UserModel, Integer> {
 
+	
+
 }

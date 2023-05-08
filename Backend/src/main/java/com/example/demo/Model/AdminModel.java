@@ -3,13 +3,15 @@ package com.example.demo.Model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="Admin")
 public class AdminModel {
 	
 	@Id
+	private int UserRole;
 	private String Email;
 	private String Password;
 	private String MobileNumber;
-	private String UserRole;
+	
 	public String getEmail() {
 		return Email;
 	}
@@ -28,10 +30,10 @@ public class AdminModel {
 	public void setMobileNumber(String mobileNumber) {
 		MobileNumber = mobileNumber;
 	}
-	public String getUserRole() {
+	public int getUserRole() {
 		return UserRole;
 	}
-	public void setUserRole(String userRole) {
+	public void setUserRole(int userRole) {
 		UserRole = userRole;
 	}
 
