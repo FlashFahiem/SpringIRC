@@ -9,9 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Model.AdminModel;
+import com.example.demo.Model.LoginModel;
 import com.example.demo.Model.UserModel;
+import com.example.demo.Model.LoanApplicationModel;
 import com.example.demo.Repositories.AdminRepo;
+import com.example.demo.Repositories.LoanApplicationRepo;
 import com.example.demo.Repositories.UserRepo;
+import com.example.demo.Repositories.LoginRepo;
 
 
 @Service
@@ -66,6 +70,57 @@ public class LoanService {
 		arepo.deleteById(userRole);
 		return "Deleted";
 	}
+	
+	//Login
+	@Autowired
+	public LoginRepo lrepo;
+	
+	public List<LoginModel> getLoginInfo()
+	{
+		return lrepo.findAll();
+	}
+	
+	public LoginModel saveLogin(LoginModel lm)
+	{
+		return lrepo.save(lm);
+	}
+	
+	public LoginModel updateLogin(LoginModel lm)
+	{
+		return lrepo.saveAndFlush(lm);
+	}
+//	
+//	public String deleteLogin(String password)
+//	{
+//		return lrepo.deleteAll(password);
+//	}
+	
+	//Loan Application
+	@Autowired
+	public LoanApplicationRepo lorepo;
+	
+	public List<LoanApplicationModel> getLoan()
+	{
+		return lorepo.findAll();
+	}
+	
+	public LoanApplicationModel saveLoan(LoanApplicationModel lo)
+	{
+		return lorepo.save(lo);
+	}
+	
+	public LoanApplicationModel updateLoan(LoanApplicationModel lo)
+	{
+		return lorepo.saveAndFlush(lo);
+	}
+	
+	public String deleteLoan(int loanId)
+	{
+		lorepo.deleteById(loanId);
+		return "Deleted";
+	}
+	
+	
 	
 	
 	
